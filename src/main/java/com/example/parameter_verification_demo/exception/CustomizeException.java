@@ -2,7 +2,6 @@ package com.example.parameter_verification_demo.exception;
 
 
 import com.example.parameter_verification_demo.common.result.ErrorCode;
-import com.example.parameter_verification_demo.common.result.IErrorCode;
 
 /**
  * 自定义异常

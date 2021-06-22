@@ -1,30 +1,33 @@
 package com.example.parameter_verification_demo.enums;
 
 /**
- * 状态 枚举类
+ * 男女 性别枚举类
  *
  * @author aaron
- * @since 2021-01-19
+ * @since 2021-06-22
  */
-public enum StatusEnums {
+public enum GenderEnums {
 
     /**
-     * 状态类型
+     * 男
      */
-    YES("1", "是"),
-    NO("0", "否");
+    MALE(1, "男"),
+    /**
+     * 女
+     */
+    FEMALE(0, "女");
 
     /**
      * code
      */
-    private String code;
+    private final int code;
 
     /**
      * description
      */
-    private String description;
+    private final String description;
 
-    StatusEnums(String code, String description) {
+    GenderEnums(int code, String description) {
         this.code = code;
         this.description = description;
     }
@@ -35,10 +38,10 @@ public enum StatusEnums {
      * @param code code
      * @return StatusEnums
      */
-    public static StatusEnums from(String code) {
-        for (StatusEnums statusEnums : StatusEnums.values()) {
-            if (statusEnums.code.equals(code)) {
-                return statusEnums;
+    public static GenderEnums from(int code) {
+        for (GenderEnums genderEnums : GenderEnums.values()) {
+            if (genderEnums.code == code) {
+                return genderEnums;
             }
         }
         return null;
@@ -50,9 +53,9 @@ public enum StatusEnums {
      * @param code code
      * @return boolean
      */
-    public static boolean isValidEnum(String code) {
-        for (StatusEnums statusEnums : StatusEnums.values()) {
-            if (statusEnums.code.equals(code)) {
+    public static boolean isValidEnum(int code) {
+        for (GenderEnums genderEnums : GenderEnums.values()) {
+            if (genderEnums.code == code) {
                 return true;
             }
         }
@@ -60,11 +63,12 @@ public enum StatusEnums {
     }
 
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
     public String getDescription() {
         return description;
     }
+
 }
