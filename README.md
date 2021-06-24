@@ -1,2 +1,5 @@
-# parameter_verification_demo
-SpringBoot Api Controller 参数校验统一处理
+# springboot项目 接口参数校验示例
+# 环境
+- jdk1.8
+- maven3.6.3
+
