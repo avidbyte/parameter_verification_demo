@@ -1,0 +1,686 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "parameter_verification_demo",
+    "version": "last"
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "商品管理",
+      "description": "商品管理"
+    },
+    {
+      "name": "用户相关接口",
+      "description": "用户相关接口"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/product/create": {
+      "post": {
+        "tags": [
+          "商品管理"
+        ],
+        "summary": "创建商品",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "properties": {
+                "uid": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "唯一id",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "unit": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "单位",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "productExtensionInfoDto": {
+                  "properties": {
+                    "memberPrice": {
+                      "type": "number",
+                      "default": "0.111111",
+                      "description": "会员价",
+                      "mock": {
+                        "mock": "@float"
+                      }
+                    },
+                    "fullPrice": {
+                      "type": "number",
+                      "default": "0.111111",
+                      "description": "商品价格",
+                      "mock": {
+                        "mock": "@float"
+                      }
+                    }
+                  },
+                  "required": [
+                    "fullPrice",
+                    "memberPrice"
+                  ],
+                  "type": "object",
+                  "description": "商品扩展信息"
+                },
+                "name": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "商品名称",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "subjectProductRelationList": {
+                  "items": {
+                    "properties": {
+                      "productId": {
+                        "type": "integer",
+                        "default": "1",
+                        "description": "",
+                        "mock": {
+                          "mock": "@integer"
+                        }
+                      },
+                      "id": {
+                        "type": "integer",
+                        "default": "1",
+                        "description": "",
+                        "mock": {
+                          "mock": "@integer"
+                        }
+                      },
+                      "subjectId": {
+                        "type": "integer",
+                        "default": "1",
+                        "description": "",
+                        "mock": {
+                          "mock": "@integer"
+                        }
+                      }
+                    },
+                    "required": [
+                      "subjectId",
+                      "productId"
+                    ],
+                    "type": "object"
+                  },
+                  "uniqueItems": false,
+                  "minItems": 1,
+                  "maxItems": 2147483647,
+                  "type": "array",
+                  "description": "商品与专题关系"
+                },
+                "description": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "商品描述",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "stock": {
+                  "type": "integer",
+                  "default": "1",
+                  "description": "库存",
+                  "mock": {
+                    "mock": "@integer"
+                  }
+                }
+              },
+              "required": [
+                "uid",
+                "name",
+                "stock",
+                "unit",
+                "description",
+                "productExtensionInfoDto",
+                "subjectProductRelationList"
+              ],
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "data": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                }
+              },
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/product/subjectAssociated": {
+      "post": {
+        "tags": [
+          "商品管理"
+        ],
+        "summary": "商品关联专题接口",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "items": {
+                "properties": {
+                  "productId": {
+                    "type": "integer",
+                    "default": "1",
+                    "description": "",
+                    "mock": {
+                      "mock": "@integer"
+                    }
+                  },
+                  "id": {
+                    "type": "integer",
+                    "default": "1",
+                    "description": "",
+                    "mock": {
+                      "mock": "@integer"
+                    }
+                  },
+                  "subjectId": {
+                    "type": "integer",
+                    "default": "1",
+                    "description": "",
+                    "mock": {
+                      "mock": "@integer"
+                    }
+                  }
+                },
+                "required": [
+                  "subjectId",
+                  "productId"
+                ],
+                "type": "object"
+              },
+              "uniqueItems": false,
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "array"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "data": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                }
+              },
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/product/update": {
+      "patch": {
+        "tags": [
+          "商品管理"
+        ],
+        "summary": "更新商品信息",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "properties": {
+                "uid": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "唯一id",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "unit": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "单位",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "productExtensionInfoDto": {
+                  "properties": {
+                    "memberPrice": {
+                      "type": "number",
+                      "default": "0.111111",
+                      "description": "会员价",
+                      "mock": {
+                        "mock": "@float"
+                      }
+                    },
+                    "fullPrice": {
+                      "type": "number",
+                      "default": "0.111111",
+                      "description": "商品价格",
+                      "mock": {
+                        "mock": "@float"
+                      }
+                    }
+                  },
+                  "required": [
+                    "fullPrice",
+                    "memberPrice"
+                  ],
+                  "type": "object",
+                  "description": "商品扩展信息"
+                },
+                "name": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "商品名称",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "subjectProductRelationList": {
+                  "items": {
+                    "properties": {
+                      "productId": {
+                        "type": "integer",
+                        "default": "1",
+                        "description": "",
+                        "mock": {
+                          "mock": "@integer"
+                        }
+                      },
+                      "id": {
+                        "type": "integer",
+                        "default": "1",
+                        "description": "",
+                        "mock": {
+                          "mock": "@integer"
+                        }
+                      },
+                      "subjectId": {
+                        "type": "integer",
+                        "default": "1",
+                        "description": "",
+                        "mock": {
+                          "mock": "@integer"
+                        }
+                      }
+                    },
+                    "required": [
+                      "subjectId",
+                      "productId"
+                    ],
+                    "type": "object"
+                  },
+                  "uniqueItems": false,
+                  "minItems": 1,
+                  "maxItems": 2147483647,
+                  "type": "array",
+                  "description": "商品与专题关系"
+                },
+                "description": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "商品描述",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "stock": {
+                  "type": "integer",
+                  "default": "1",
+                  "description": "库存",
+                  "mock": {
+                    "mock": "@integer"
+                  }
+                }
+              },
+              "required": [
+                "uid",
+                "name",
+                "stock",
+                "unit",
+                "description",
+                "productExtensionInfoDto",
+                "subjectProductRelationList"
+              ],
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "data": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                }
+              },
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/product/enumsTest": {
+      "post": {
+        "tags": [
+          "商品管理"
+        ],
+        "summary": "枚举参数校验测试接口",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "default": "1",
+                  "description": "code",
+                  "mock": {
+                    "mock": "@integer"
+                  }
+                }
+              },
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "data": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                }
+              },
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/user/updateUserInfo": {
+      "put": {
+        "tags": [
+          "用户相关接口"
+        ],
+        "summary": "分组校验 group 包含 Update的 方可生效修改用户信息",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "properties": {
+                "phoneNumber": {
+                  "type": "integer",
+                  "default": "1",
+                  "description": "手机号",
+                  "mock": {
+                    "mock": "@integer"
+                  }
+                },
+                "gender": {
+                  "type": "integer",
+                  "default": "1",
+                  "description": "性别",
+                  "mock": {
+                    "mock": "@integer"
+                  }
+                },
+                "name": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "姓名",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "email": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "邮箱",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "gender"
+              ],
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "data": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                }
+              },
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/user/setPassword": {
+      "post": {
+        "tags": [
+          "用户相关接口"
+        ],
+        "summary": "正则校验设置密码",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "properties": {
+                "password": {
+                  "pattern": "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,10}$",
+                  "type": "string",
+                  "default": "String",
+                  "description": "密码",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                }
+              },
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "data": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "default": "String",
+                  "description": "",
+                  "mock": {
+                    "mock": "@string"
+                  }
+                }
+              },
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
+}
