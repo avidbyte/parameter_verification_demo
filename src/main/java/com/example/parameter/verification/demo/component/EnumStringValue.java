@@ -19,8 +19,8 @@ import java.lang.reflect.Modifier;
  */
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = EnumValue.Validator.class)
-public @interface EnumValue {
+@Constraint(validatedBy = EnumStringValue.Validator.class)
+public @interface EnumStringValue {
 
     String message() default "{enum.value.invalid}"; // 错误信息
 
@@ -34,13 +34,13 @@ public @interface EnumValue {
 
     boolean allowNull() default false; // 是否允许为空
 
-    class Validator implements ConstraintValidator<EnumValue, Object> {
+    class Validator implements ConstraintValidator<EnumStringValue, Object> {
         private Class<? extends Enum<?>> enumClass;
         private String enumMethod;
         private boolean allowNull;
 
         @Override
-        public void initialize(EnumValue enumValue) {
+        public void initialize(EnumStringValue enumValue) {
             enumMethod = enumValue.enumMethod();
             enumClass = enumValue.enumClass();
             allowNull = enumValue.allowNull();

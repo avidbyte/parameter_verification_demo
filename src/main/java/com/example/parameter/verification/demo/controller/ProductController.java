@@ -69,8 +69,9 @@ public class ProductController {
      */
     @PostMapping("/enumsTest")
     CommonResult<String> enumsTest(@RequestBody @Validated EnumsParam enumsParam) {
-        String code = enumsParam.getCode();
-        return CommonResult.success(code);
+        Integer code = enumsParam.getGender();
+        String bloodType = enumsParam.getBloodType();
+        return CommonResult.success(bloodType);
     }
 
 

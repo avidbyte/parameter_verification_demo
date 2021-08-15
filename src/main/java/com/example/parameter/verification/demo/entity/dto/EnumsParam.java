@@ -1,7 +1,8 @@
 package com.example.parameter.verification.demo.entity.dto;
 
-import com.example.parameter.verification.demo.component.EnumValue;
-import com.example.parameter.verification.demo.enums.GenderEnums;
+import com.example.parameter.verification.demo.custom.EnumValue;
+import com.example.parameter.verification.demo.enums.BloodTypeEnum;
+import com.example.parameter.verification.demo.enums.GenderEnums2;
 import lombok.Data;
 
 /**
@@ -15,7 +16,13 @@ public class EnumsParam {
     /**
      * code
      */
-    @EnumValue(enumClass = GenderEnums.class,message = "性别参数非法")
-    private String code;
+
+    @EnumValue(clazz = GenderEnums2.class,message = "性别参数非法")
+    private Integer gender;
+
+
+    @EnumValue(clazz = BloodTypeEnum.class,message = "血型参数非法")
+    private String bloodType;
+
 
 }
