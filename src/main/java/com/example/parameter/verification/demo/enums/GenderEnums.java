@@ -11,23 +11,23 @@ public enum GenderEnums {
     /**
      * 男
      */
-    MALE("1", "男"),
+    MALE(1, "男"),
     /**
      * 女
      */
-    FEMALE("0", "女");
+    FEMALE(0, "女");
 
     /**
      * code
      */
-    private final String code;
+    private final Integer code;
 
     /**
      * description
      */
     private final String description;
 
-    GenderEnums(String code, String description) {
+    GenderEnums(int code, String description) {
         this.code = code;
         this.description = description;
     }
@@ -38,7 +38,7 @@ public enum GenderEnums {
      * @param code code
      * @return StatusEnums
      */
-    public static GenderEnums from(String code) {
+    public static GenderEnums from(Integer code) {
         for (GenderEnums genderEnums : GenderEnums.values()) {
             if (genderEnums.code.equals(code)) {
                 return genderEnums;
@@ -47,23 +47,8 @@ public enum GenderEnums {
         return null;
     }
 
-    /**
-     * 判断code 是否符合枚举类中的code
-     *
-     * @param code code
-     * @return boolean
-     */
-    public static boolean isValidEnum(String code) {
-        for (GenderEnums genderEnums : GenderEnums.values()) {
-            if (genderEnums.code.equals(code)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
-
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 

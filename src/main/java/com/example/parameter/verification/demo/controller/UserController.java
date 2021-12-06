@@ -1,7 +1,7 @@
 package com.example.parameter.verification.demo.controller;
 
 import com.example.parameter.verification.demo.common.result.CommonResult;
-import com.example.parameter.verification.demo.entity.dto.UserInfoDto;
+import com.example.parameter.verification.demo.entity.dto.UserInfoDTO;
 import com.example.parameter.verification.demo.entity.dto.PasswordParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -29,7 +29,7 @@ public class UserController {
      * @return CommonResult<Boolean>
      */
     @PostMapping("/setPassword")
-    CommonResult<String> create(@RequestBody @Validated PasswordParam passwordParam) {
+    CommonResult<String> setPassword(@RequestBody @Validated PasswordParam passwordParam) {
         String password = passwordParam.getPassword();
         return CommonResult.success(password);
     }
@@ -43,18 +43,11 @@ public class UserController {
      * @return CommonResult<String>
      */
     @PutMapping("/updateUserInfo")
-    CommonResult<String> updateUserInfo(@RequestBody @Validated(UserInfoDto.Update.class) UserInfoDto userInfoDto) {
+    CommonResult<String> updateUserInfo(@RequestBody @Validated(UserInfoDTO.Update.class) UserInfoDTO userInfoDto) {
         String name = userInfoDto.getName();
         return CommonResult.success(name);
     }
 
 
-    @GetMapping("/get")
-    CommonResult<String> get() throws InterruptedException {
-        System.out.println("=========== System.out.println =============");
-        log.info("=========== log.info ===========");
-        Thread.sleep(10000);
-        return CommonResult.success("hhh");
-    }
 
 }

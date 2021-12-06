@@ -8,7 +8,7 @@ import lombok.Data;
  * @since 2021-06-22
  */
 @Data
-public class ContactDto {
+public class ContactDTO {
 
     /**
      * 联系人姓名

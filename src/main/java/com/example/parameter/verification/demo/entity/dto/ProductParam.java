@@ -26,7 +26,7 @@ public class ProductParam {
     /**
      * 唯一id
      */
-    @NotBlank(groups = {Update.class}, message = "商品名称不能为空")
+    @NotBlank(groups = {Update.class}, message = "唯一id不能为空")
     private String uid;
 
     /**
@@ -57,7 +57,7 @@ public class ProductParam {
      */
     @Valid
     @NotNull(groups = {Create.class}, message = "商品扩展信息不能为空")
-    private ProductExtensionInfoDto productExtensionInfoDto;
+    private ProductExtensionInfoDTO productExtensionInfoDto;
 
     /**
      * 商品与专题关系

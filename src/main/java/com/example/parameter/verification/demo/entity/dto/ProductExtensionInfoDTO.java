@@ -7,11 +7,12 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**
+ *  扩展信息对象
  * @author aaron
  * @since 2021-06-24
  */
 @Data
-public class ProductExtensionInfoDto {
+public class ProductExtensionInfoDTO {
 
     /**
      * 商品价格

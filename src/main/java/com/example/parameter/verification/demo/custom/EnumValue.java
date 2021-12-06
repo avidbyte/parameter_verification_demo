@@ -31,7 +31,7 @@ public @interface EnumValue {
 
     Class<?> clazz();
 
-    String method() default "ordinal";
+    String method() default "getCode";
 
 
     @Documented

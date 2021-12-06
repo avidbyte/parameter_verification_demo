@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class Attribute {
 
-    @NotNull(groups = UserInfoDto.Create.class,message = "aid不能为空")
+    @NotNull(groups = UserInfoDTO.Create.class,message = "aid不能为空")
     @Min(value = 1, message = "aid必须为正整数")
     private Integer aId;
 

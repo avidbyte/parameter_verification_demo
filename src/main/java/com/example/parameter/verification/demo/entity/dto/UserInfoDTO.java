@@ -14,7 +14,7 @@ import javax.validation.constraints.Pattern;
  * @since 2021-06-22
  */
 @Data
-public class UserInfoDto {
+public class UserInfoDTO {
 
     public interface Create {
     }
@@ -26,7 +26,7 @@ public class UserInfoDto {
     /**
      * 姓名
      */
-    @NotBlank(groups = UserInfoDto.Create.class, message = "姓名不能为空")
+    @NotBlank(groups = UserInfoDTO.Create.class, message = "姓名不能为空")
     private String name;
 
     /**

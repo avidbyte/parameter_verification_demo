@@ -9,6 +9,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * 商品管理
@@ -62,6 +64,18 @@ public class ProductController {
 
 
     /**
+     *  list 校验
+     * @param ids ids
+     * @return  CommonResult<String>
+     */
+    @PostMapping("/setRelation")
+    CommonResult<String> setRelation(@RequestBody @NotEmpty(message = "集合不能为空") List<@NotNull(message = "id不能为Null") Integer> ids) {
+        int size = ids.size();
+        return CommonResult.success(Integer.toString(size));
+    }
+
+
+    /**
      * 枚举参数校验测试接口
      *
      * @param enumsParam 枚举测试对象
@@ -73,6 +87,5 @@ public class ProductController {
         String bloodType = enumsParam.getBloodType();
         return CommonResult.success(bloodType);
     }
-
 
 }

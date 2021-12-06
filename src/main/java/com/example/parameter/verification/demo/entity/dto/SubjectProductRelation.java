@@ -2,6 +2,7 @@ package com.example.parameter.verification.demo.entity.dto;
 
 import lombok.Data;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
  * @since 2021-06-24
  */
 @Data
+@Valid
 public class SubjectProductRelation {
 
 

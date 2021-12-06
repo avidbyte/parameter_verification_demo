@@ -25,12 +25,21 @@ public class EnumValidator implements ConstraintValidator<EnumValue, Object> {
         }
 
         Object[] objects = annotation.clazz().getEnumConstants();
+
         try {
             Method method = annotation.clazz().getMethod(annotation.method());
             for (Object o : objects) {
-                if (value.equals(method.invoke(o))) {
-                    return true;
+                Object obj = method.invoke(o);
+                // 支持 枚举类 code 为 String 和 Integer 类型的 值
+                if (obj instanceof String) {
+                    String code = (String) obj;
+                    return code.equals(value);
                 }
+                if (obj instanceof Integer) {
+                    Integer code = (Integer) obj;
+                    return code.equals(value);
+                }
+                return false;
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
